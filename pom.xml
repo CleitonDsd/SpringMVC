@@ -52,8 +52,8 @@
 	<build>
 
 		<plugins>
-			<plugin>
 
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
@@ -61,11 +61,21 @@
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
 				</configuration>
-
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>apache-maven-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+					<wtpContextName>springmvc</wtpContextName>
+				</configuration>
+			</plugin>
 
+			<plugin>
 				<groupId>org.eclipse.apache</groupId>
 				<artifactId>apache-maven-plugin</artifactId>
 				<version>9.2.11.v20150529</version>
@@ -75,43 +85,43 @@
 						<contextPath>/springmvc</contextPath>
 					</webApp>
 				</configuration>
-
 			</plugin>
 
 			<plugin>
+				<groupId>org.apachetomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/springmvc</contextPath>
+					</webApp>
+				</configuration>
 
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.loggin.log4j</groupId>
+						<artifactId>log4j-core</artifactId>
+						<version>2.5</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j</artifactId>
+						<version>1.7.3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>apache-resources-plugin</artifactId>
 				<version>2.4.3</version>
 				<configuration>
 					<encode>UTF-8</encode>
 				</configuration>
-
 			</plugin>
 
 		</plugins>
-
-
 	</build>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </project>
